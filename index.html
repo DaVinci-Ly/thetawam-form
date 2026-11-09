@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>نموذج فريق التوأم</title>
+<meta name="description" content="نموذج خاص بفريق التوأم لتجهيز موقع TheTawam.ly">
+<meta name="theme-color" content="#FFF8EE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%23FD8B4C'/%3E%3Ccircle cx='44' cy='20' r='18' fill='%239254D3'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/GA.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/GASuper.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Graphik Arabic";font-weight:400;font-display:swap;src:url(fonts/GA.woff2) format("woff2")}
+@font-face{font-family:"Graphik Arabic";font-weight:600;font-display:swap;src:url(fonts/GASemiBold.woff2) format("woff2")}
+@font-face{font-family:"Graphik Arabic";font-weight:700;font-display:swap;src:url(fonts/GABold.woff2) format("woff2")}
+@font-face{font-family:"Graphik Arabic";font-weight:900;font-display:swap;src:url(fonts/GASuper.woff2) format("woff2")}
+:root{
+  --paper:#FFF8EE; --cream:#FEE6C2; --ink:#1C1426; --ink-muted:#5E5469;
+  --orange:#FD8B4C; --orange-600:#EE7637; --purple:#9254D3; --purple-700:#6A2FB0;
+  --line:#EAD7B8; --border:#857990; --white:#FFFFFF; --success:#1E7F55; --error:#C0353B;
+  --font:"Graphik Arabic","Segoe UI","Noto Sans Arabic",Tahoma,sans-serif;
+  --pop-sm:3px 3px 0 var(--ink); --pop-md:6px 6px 0 var(--ink);
+  --tilt:-5.74deg;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--purple-700);outline-offset:3px}
+[tabindex="-1"]:focus{outline:none}
+
+.top{position:sticky;top:0;z-index:5;background:var(--paper);padding-top:calc(12px + env(safe-area-inset-top,0px));padding-bottom:10px;border-bottom:1px solid var(--line)}
+.top-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{width:144px;height:auto;display:block}
+.status{font-size:13px;line-height:1.4;color:var(--ink-muted);display:flex;align-items:center;gap:6px;min-width:0}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--line);flex:none}
+.status[data-s="ok"] i{background:var(--success)}
+.bars{display:flex;gap:4px;margin-top:10px}
+.bars button{flex:1;height:6px;border:0;padding:0;border-radius:99px;background:var(--line);cursor:pointer;position:relative;overflow:hidden}
+.bars button span{position:absolute;inset:0 0 0 auto;width:0;background:var(--ink);border-radius:99px;transition:width .3s ease}
+.bars button[aria-current="step"]{outline:2px solid var(--purple-700);outline-offset:2px}
+
+.sticker{display:inline-block;transform:rotate(var(--tilt));border-radius:.4em;padding:.15em .6em .2em;font-weight:700;line-height:1.3;white-space:nowrap}
+.sticker.o{background:var(--orange);color:var(--ink)}
+.sticker.p{background:var(--purple);color:var(--white)}
+
+.intro{padding-top:calc(40px + env(safe-area-inset-top,0px));padding-bottom:56px;display:grid;gap:28px}
+.intro .logo{width:160px}
+.intro h1{font-size:clamp(34px,7.5vw,56px);line-height:1.2;font-weight:900}
+.lead{font-size:clamp(18px,2.6vw,20px);max-width:60ch}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rules li{display:flex;gap:12px;align-items:baseline}
+.rules li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:7px 0 0 var(--purple);margin-inline-end:10px;transform:translateY(-1px)}
+.pick h2{font-size:24px;font-weight:600;margin-bottom:14px;line-height:1.4}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.who button{border:2px solid var(--ink);background:var(--white);border-radius:20px;padding:22px 16px 18px;cursor:pointer;display:grid;gap:12px;justify-items:center;transition:transform .15s ease-out,box-shadow .15s ease-out}
+.who button:hover{transform:translate(-2px,-2px);box-shadow:var(--pop-md)}
+.who button:active{transform:none;box-shadow:none}
+.who .sticker{font-size:clamp(26px,6vw,36px);font-weight:900}
+.who small{font-size:14px;color:var(--ink-muted);line-height:1.5}
+.note{font-size:14px;color:var(--ink-muted);line-height:1.65}
+
+.step{padding-block:32px 48px}
+.step-head{display:grid;gap:12px;margin-bottom:28px}
+.count{font-size:13px;font-weight:600;color:var(--ink-muted)}
+.step-head h2{font-size:clamp(32px,7vw,48px);line-height:1.2;font-weight:900}
+.step-head p{color:var(--ink-muted);font-size:18px;max-width:60ch}
+.qs{display:grid;gap:30px}
+.q{display:grid;gap:8px;min-width:0}
+.q > label,.q legend{font-size:18px;font-weight:600;line-height:1.55;padding:0}
+.opt{font-size:13px;font-weight:400;color:var(--ink-muted);margin-inline-start:6px}
+.hint{font-size:14px;color:var(--ink-muted);line-height:1.6;margin-top:-4px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+input[type=text],textarea{width:100%;background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;font-size:16px;line-height:1.7}
+input[type=text]{min-height:52px}
+textarea{min-height:120px;resize:vertical}
+textarea.short{min-height:84px}
+input:focus,textarea:focus{outline:none;border-color:var(--purple-700);box-shadow:0 0 0 4px rgba(146,84,211,.25)}
+.q.missing input[type=text],.q.missing textarea{border-color:var(--error)}
+.miss-msg{display:none;color:var(--error);font-size:14px}
+.q.missing .miss-msg{display:block}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--border);background:var(--white);font-size:15px;line-height:1.4;cursor:pointer;transition:background .15s}
+.chip input:checked + span{background:var(--purple-700);border-color:var(--purple-700);color:var(--white)}
+.chip input:checked + span::before{content:"✓";font-weight:700}
+.chip input:focus-visible + span{outline:3px solid var(--purple-700);outline-offset:3px}
+.other{margin-top:8px}
+
+.proj-list{display:grid;gap:20px}
+.proj{border:1.5px solid var(--line);background:var(--white);border-radius:20px;padding:20px 18px;display:grid;gap:18px}
+.proj-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.proj-top h3{font-size:20px;font-weight:700}
+.proj .q > label,.proj .q legend{font-size:16px}
+.linkbtn{background:none;border:0;color:var(--purple-700);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px;cursor:pointer;padding:6px 2px;font-size:15px}
+.none-box{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.none-box input{width:20px;height:20px;accent-color:var(--purple-700);margin-top:5px;flex:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;cursor:pointer;border:2px solid transparent;transition:transform .15s ease-out,box-shadow .15s ease-out,background .15s}
+.btn.primary{background:var(--orange);color:var(--ink)}
+.btn.primary:hover{background:var(--orange-600);transform:translateY(-2px);box-shadow:var(--pop-sm)}
+.btn.outline{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn.outline:hover{background:var(--cream)}
+.btn:active{transform:none;box-shadow:none}
+.btn[disabled]{opacity:.6;cursor:wait}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:40px;padding-top:24px;border-top:2px solid var(--ink);flex-wrap:wrap}
+.nav .left{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.remain{font-size:14px;color:var(--ink-muted)}
+
+.alert{border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.65;display:grid;gap:8px}
+.alert.err{background:#F6E1E1;color:#7A1F23}
+.alert ul{margin:0;padding-inline-start:20px}
+.alert button{font:inherit;background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer;text-align:start}
+.done{padding-block:56px 72px;display:grid;gap:22px}
+.done h2{font-size:clamp(34px,7.5vw,52px);line-height:1.2;font-weight:900}
+.copybox{width:100%;min-height:180px;font-size:14px}
+.foot{padding-block:24px calc(40px + env(safe-area-inset-bottom,0px));font-size:13px;color:var(--ink-muted);text-align:center}
+
+@media (min-width:768px){ .step{padding-block:48px 64px} .proj{padding:24px} }
+@media (max-width:420px){
+  .who{gap:12px} .who button{padding:18px 10px 16px}
+  .nav{flex-direction:column-reverse;align-items:stretch}
+  .nav .left{flex-direction:column-reverse;align-items:stretch}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top" hidden>
+  <div class="wrap">
+    <div class="top-row">
+      <img class="logo" src="logo.svg" alt="فريق التوأم" width="144" height="98">
+      <div class="status" id="status" data-s="idle" role="status" aria-live="polite"><i></i><span id="statusText"></span></div>
+    </div>
+    <div class="bars" id="bars" aria-label="أقسام النموذج"></div>
+  </div>
+</header>
+
+<main id="app" class="wrap"></main>
+<p class="foot wrap">نموذج خاص بفريق التوأم · TheTawam.ly</p>
+
+<script>
+(function(){
+"use strict";
+
+/* Answers are emailed through Formspree. Replace with the form's endpoint. */
+var FORM_ENDPOINT = "https://formspree.io/f/xeaayqae";
+
+var PEOPLE = {
+  rayan: {name:"ريان", sister:"رتاج", cls:"o"},
+  retaj: {name:"رتاج", sister:"ريان", cls:"p"}
+};
+
+var STEPS = [
+ {title:"عنكِ", intro:"معلومات أساسية عنكِ.", qs:[
+  {id:"name_ar", type:"text", label:"اسمك كما تحبين أن يظهر في الموقع", ph:"{name} مفتاح"},
+  {id:"name_en", type:"text", ltr:true, label:"اسمك بالإنجليزية", hint:"حتى يُكتب بنفس الطريقة في كل مكان وفي نتائج البحث.", ph:"…Muftah"},
+  {id:"bio", type:"textarea", label:"عرّفي بنفسك في ثلاث أو أربع جمل", hint:"ماذا تدرسين أو تعملين، وعن ماذا تتكلمين في حسابك."},
+  {id:"links", type:"textarea", short:true, optional:true, ltr:true, label:"حساباتك التي تريدين إظهارها في الموقع", hint:"روابط أو أسماء الحسابات: إنستغرام، تيك توك، لينكدإن…"}
+ ]},
+ {title:"العمل مع {sister}", intro:"كيف تعملان كفريق.", qs:[
+  {id:"start", type:"textarea", short:true, label:"متى وكيف بدأتما العمل معًا؟"},
+  {id:"contrib", type:"textarea", label:"ما الذي تضيفينه أنتِ للعمل، وما الذي تضيفه {sister}؟"},
+  {id:"roles", type:"chips", label:"ما الأدوار التي تتولينها عادة في المشروع؟", hint:"اختاري كل ما ينطبق.", options:["الفكرة","كتابة السكربت والكابشن","التصوير","المونتاج","الظهور أمام الكاميرا","التواصل مع العميل","التخطيط والنشر","التصميم"]},
+  {id:"one_line", type:"text", label:"جملة واحدة تلخص عملكما معًا"},
+  {id:"accounts", type:"textarea", short:true, label:"ما الفرق بين ‎@thetawam و ‎@the.tawam.team، ولمن يتوجه كل حساب؟"},
+  {id:"side", type:"textarea", short:true, label:"ما هو ‎@tovieri.fiori؟ وهل لديكما مشاريع أخرى تريدان إظهارها في الموقع؟"}
+ ]},
+ {title:"الخدمات", intro:"اذكري ما تقدمانه حاليًا فقط.", qs:[
+  {id:"services", type:"chips", label:"ما الخدمات التي تقدمانها حاليًا؟", options:["محتوى كامل من الفكرة إلى النشر","تصوير","مونتاج","ظهور وتقديم إعلاني","محتوى UGC للعلامات","إدارة حسابات","إدارة حملات","تغطية فعاليات","استشارة في المحتوى"]},
+  {id:"services_detail", type:"textarea", label:"اشرحي أهم خدمتين أو ثلاث: ماذا يستلم العميل في النهاية؟"},
+  {id:"clients", type:"textarea", short:true, label:"مع أي نوع من العملاء تعملان؟ وهل هناك مجالات لا تقبلانها؟"},
+  {id:"markets", type:"chips", label:"أين عملاؤكما وجمهوركما؟", options:["ليبيا","دول الخليج","باقي الدول العربية","خارج العالم العربي"]},
+  {id:"process", type:"textarea", short:true, label:"كيف تسير خطوات العمل عادة، من أول تواصل مع العميل حتى النشر؟"}
+ ]},
+ {title:"الأعمال", intro:"أضيفي المشاريع والتعاونات التي تودّين عرضها. اكتبي ما تتذكرينه، ونكمل التفاصيل معكما لاحقًا. لن نذكر أي أرقام في الموقع إلا إذا كانت موثقة.", qs:[
+  {id:"projects", type:"projects"}
+ ]},
+ {title:"الموقع والتواصل", intro:"القسم الأخير.", qs:[
+  {id:"first", type:"textarea", short:true, label:"ما أهم شيء يجب أن يفهمه الزائر عنكما؟"},
+  {id:"visitor", type:"textarea", short:true, label:"من الزائر الأهم للموقع؟", hint:"مثلًا: أصحاب الشركات، مسؤولو التسويق…"},
+  {id:"likes", type:"textarea", short:true, optional:true, label:"مواقع أو حسابات يعجبك أسلوبها", hint:"أضيفي الروابط وما الذي أعجبك فيها."},
+  {id:"followers", type:"radio", label:"هل تريدين إظهار عدد المتابعين في الموقع؟", options:["نعم","لا","لا يهم"]},
+  {id:"photos", type:"radio", label:"بالنسبة لصور الموقع", options:["لدينا صور جاهزة بجودة عالية","نفضّل جلسة تصوير خاصة","الاثنان"]},
+  {id:"contact_way", type:"chips", label:"كيف تفضّلان أن يتواصل معكما العملاء؟", options:["واتساب","البريد الإلكتروني","نموذج في الموقع","رسائل إنستغرام"]},
+  {id:"contact_details", type:"textarea", short:true, label:"رقم أو بريد التواصل الذي يظهر في الموقع", hint:"إذا لم يُحسم بعد، اكتبي «لاحقًا»."},
+  {id:"extra", type:"textarea", short:true, optional:true, label:"أي ملاحظة أخرى عن الموقع؟"}
+ ]}
+];
+
+var PROJ_FIELDS = [
+  {id:"brand", type:"text", label:"اسم العلامة أو المشروع"},
+  {id:"when", type:"text", label:"التاريخ", ph:"مثلًا: صيف 2026"},
+  {id:"platform", type:"text", label:"المنصة", ph:"إنستغرام، تيك توك…"},
+  {id:"brief", type:"textarea", short:true, label:"ما المطلوب، وما الفكرة التي قدمتماها؟"},
+  {id:"role", type:"textarea", short:true, label:"ما دوركما بالتحديد؟"},
+  {id:"result", type:"textarea", short:true, optional:true, label:"النتيجة", hint:"أرقام أو ردود فعل، فقط ما لديكما ما يثبته."},
+  {id:"link", type:"text", optional:true, ltr:true, label:"رابط المحتوى"},
+  {id:"show", type:"radio", label:"هل يمكن عرضه في الموقع؟", options:["نعم","لا","نحتاج موافقة العميل"]}
+];
+
+var who=null, stepIdx=0, data=null, saveTimer=null;
+
+function blank(){ return {answers:{}, projects:[newProj()], noProjects:false, sentAt:0, updatedAt:0, step:0}; }
+function newProj(){ return {k:Math.random().toString(36).slice(2,9)}; }
+function P(){ return PEOPLE[who]; }
+function fill(s){ return who ? String(s).replace(/\{name\}/g,P().name).replace(/\{sister\}/g,P().sister) : s; }
+function el(tag, attrs, kids){
+  var e=document.createElement(tag);
+  if(attrs) for(var k in attrs){ var v=attrs[k]; if(v==null||v===false) continue;
+    if(k==="text") e.textContent=v;
+    else if(k.slice(0,2)==="on") e.addEventListener(k.slice(2),v);
+    else e.setAttribute(k,v===true?"":v); }
+  (kids||[]).forEach(function(c){ if(c) e.appendChild(typeof c==="string"?document.createTextNode(c):c); });
+  return e;
+}
+function lsGet(k){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):null; }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); return true; }catch(e){ return false; } }
+function key(){ return "tawam-intake-"+who; }
+
+function setStatus(s,text){ var st=document.getElementById("status"); st.setAttribute("data-s",s); document.getElementById("statusText").textContent=text; }
+function save(){
+  data.updatedAt=Date.now();
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(function(){ var ok=lsSet(key(),data); setStatus(ok?"ok":"idle", ok?"محفوظ على جهازك":"لم يُحفظ على هذا المتصفح"); },400);
+}
+
+/* completeness */
+function isFilled(q,src){
+  var v=(src||data.answers)[q.id];
+  if(q.type==="chips") return !!(v && ((v.picked&&v.picked.length)||(v.other&&v.other.trim())));
+  return !!(v && String(v).trim());
+}
+function hasAny(p){ return PROJ_FIELDS.some(function(f){ return isFilled(f,p); }); }
+function stepMissing(s){
+  var miss=[];
+  s.qs.forEach(function(q){
+    if(q.optional) return;
+    if(q.type==="projects"){
+      if(data.noProjects) return;
+      var real=data.projects.filter(hasAny);
+      if(!real.length) miss.push({q:q,label:"أضيفي مشروعًا واحدًا على الأقل، أو اختاري «لا توجد مشاريع أضيفها الآن»"});
+      else real.forEach(function(p){
+        var i=data.projects.indexOf(p);
+        if(PROJ_FIELDS.some(function(f){ return !f.optional && !isFilled(f,p); })) miss.push({q:q,label:"المشروع "+(i+1)+": بعض الخانات فارغة"});
+      });
+      return;
+    }
+    if(!isFilled(q)) miss.push({q:q,label:fill(q.label)});
+  });
+  return miss;
+}
+function stepRatio(s){ var req=s.qs.filter(function(q){return !q.optional;}).length; return req?(req-stepMissing(s).length)/req:1; }
+function totalMissing(){ return STEPS.reduce(function(n,s){ return n+stepMissing(s).length; },0); }
+function remainText(){
+  var n=totalMissing();
+  if(!n) return "كل الأسئلة مُجابة";
+  if(n===1) return "بقي سؤال واحد";
+  if(n===2) return "بقي سؤالان";
+  return "بقي "+n+(n<=10?" أسئلة":" سؤالًا");
+}
+
+var app=document.getElementById("app");
+
+function renderBars(){
+  var b=document.getElementById("bars"); b.innerHTML="";
+  STEPS.forEach(function(s,i){
+    var span=el("span"); span.style.width=Math.round(stepRatio(s)*100)+"%";
+    b.appendChild(el("button",{type:"button","aria-label":"القسم "+(i+1)+": "+fill(s.title),"aria-current":i===stepIdx?"step":null,onclick:function(){go(i);}},[span]));
+  });
+}
+function updateProgress(){
+  var spans=document.querySelectorAll("#bars button span");
+  STEPS.forEach(function(s,i){ if(spans[i]) spans[i].style.width=Math.round(stepRatio(s)*100)+"%"; });
+  var r=document.getElementById("remain"); if(r) r.textContent=remainText();
+}
+function changed(){ save(); updateProgress(); }
+
+function renderIntro(){
+  document.getElementById("top").hidden=true;
+  app.innerHTML="";
+  app.append(el("section",{class:"intro"},[
+    el("img",{class:"logo",src:"logo.svg",alt:"فريق التوأم",width:"160",height:"109"}),
+    el("h1",{text:"قبل أن نبدأ الموقع، نحتاج أن نسمع منكِ."}),
+    el("p",{class:"lead",text:"كل واحدة منكما تملأ هذا النموذج وحدها. إجاباتكما هي المادة التي سنكتب منها الموقع، فاكتبي بأسلوبك ولا تشغلي بالك بالصياغة."}),
+    el("ul",{class:"rules"},[
+      el("li",{text:"خمسة أقسام، وتحتاج حوالي 15 دقيقة."}),
+      el("li",{text:"إجاباتك تُحفظ على جهازك أثناء الكتابة، ويمكنك الإكمال لاحقًا من نفس الجهاز."}),
+      el("li",{text:"إذا لم تعرفي إجابة سؤال، اكتبي «لا أعرف» وأكملي."})
+    ]),
+    el("div",{class:"pick"},[
+      el("h2",{text:"من أنتِ؟"}),
+      el("div",{class:"who"},["rayan","retaj"].map(function(k){
+        var saved=lsGet("tawam-intake-"+k);
+        return el("button",{type:"button",onclick:function(){choose(k);}},[
+          el("span",{class:"sticker "+PEOPLE[k].cls,text:PEOPLE[k].name}),
+          el("small",{text: saved&&saved.updatedAt ? (saved.sentAt?"أُرسلت إجاباتك، ويمكنك تعديلها":"أكملي من حيث توقفتِ") : "ابدئي من هنا"})
+        ]);
+      }))
+    ]),
+    el("p",{class:"note",text:"يُفضَّل أن تملأ كل واحدة النموذج من جهازها."})
+  ]));
+  window.scrollTo(0,0);
+}
+
+function choose(k){
+  who=k;
+  data=lsGet(key())||blank();
+  if(!data.projects||!data.projects.length) data.projects=[newProj()];
+  stepIdx=Math.min(data.step||0,STEPS.length-1);
+  document.getElementById("top").hidden=false;
+  setStatus(data.updatedAt?"ok":"idle", data.updatedAt?"محفوظ على جهازك":"لم تبدئي بعد");
+  renderStep();
+}
+
+function field(q,store,prefix){
+  var id=prefix+q.id, v=store[q.id], lab=fill(q.label);
+  var wrap=el("div",{class:"q","data-q":q.id});
+  var hint=q.hint?el("p",{class:"hint",id:id+"-h",text:fill(q.hint)}):null;
+  var opt=q.optional?el("span",{class:"opt",text:"(اختياري)"}):null;
+  if(q.type==="text"||q.type==="textarea"){
+    var inp=q.type==="text"
+      ? el("input",{type:"text",id:id,autocomplete:"off",dir:q.ltr?"ltr":null,placeholder:q.ph?fill(q.ph):null,"aria-describedby":hint?id+"-h":null})
+      : el("textarea",{id:id,class:q.short?"short":null,dir:q.ltr?"ltr":null,"aria-describedby":hint?id+"-h":null});
+    inp.value=v||"";
+    inp.addEventListener("input",function(){ store[q.id]=inp.value; wrap.classList.remove("missing"); changed(); });
+    wrap.append(el("label",{for:id},[lab,opt])); if(hint) wrap.append(hint); wrap.append(inp);
+  } else {
+    var multi=q.type==="chips";
+    var cur=multi?(v||{picked:[],other:""}):null; if(multi) store[q.id]=cur;
+    var fs=el("fieldset",{},[el("legend",{},[lab,opt])]); if(hint) fs.append(hint);
+    var row=el("div",{class:"chips"});
+    q.options.forEach(function(o,i){
+      var c=el("input",{type:multi?"checkbox":"radio",name:id,id:id+"-"+i,value:o});
+      c.checked=multi?cur.picked.indexOf(o)>-1:v===o;
+      c.addEventListener("change",function(){
+        if(multi){ var a=cur.picked.filter(function(x){return x!==o;}); if(c.checked) a.push(o); cur.picked=a; }
+        else store[q.id]=o;
+        wrap.classList.remove("missing"); changed();
+      });
+      row.append(el("label",{class:"chip",for:id+"-"+i},[c,el("span",{text:o})]));
+    });
+    fs.append(row);
+    if(multi){
+      var oth=el("input",{type:"text",id:id+"-other",class:"other",placeholder:"شيء آخر؟ اكتبيه هنا","aria-label":"إضافة: "+lab});
+      oth.value=cur.other||"";
+      oth.addEventListener("input",function(){ cur.other=oth.value; wrap.classList.remove("missing"); changed(); });
+      fs.append(oth);
+    }
+    wrap.append(fs);
+  }
+  wrap.append(el("p",{class:"miss-msg",text:"هذا السؤال ما زال فارغًا."}));
+  return wrap;
+}
+
+function renderProjects(c){
+  var list=el("div",{class:"proj-list"});
+  data.projects.forEach(function(p,i){
+    var head=el("div",{class:"proj-top"},[el("h3",{text:"مشروع "+(i+1)})]);
+    if(data.projects.length>1) head.append(el("button",{type:"button",class:"linkbtn",text:"حذف هذا المشروع",onclick:function(){ data.projects.splice(i,1); changed(); renderStep(true); }}));
+    var box=el("div",{class:"proj"},[head]);
+    PROJ_FIELDS.forEach(function(f){ box.append(field(f,p,"p"+p.k+"-")); });
+    list.append(box);
+  });
+  var none=el("input",{type:"checkbox",id:"noProjects"}); none.checked=!!data.noProjects;
+  if(data.noProjects) list.style.opacity=".45";
+  none.addEventListener("change",function(){ data.noProjects=none.checked; list.style.opacity=none.checked?".45":""; changed(); });
+  c.append(
+    el("label",{class:"none-box",for:"noProjects"},[none,el("span",{text:"لا توجد مشاريع أضيفها الآن."})]),
+    list,
+    el("div",{},[el("button",{type:"button",class:"btn outline",text:"+ إضافة مشروع آخر",onclick:function(){
+      data.projects.push(newProj()); changed(); renderStep(true);
+      var all=document.querySelectorAll(".proj"), last=all[all.length-1];
+      if(last){ last.scrollIntoView({behavior:"smooth",block:"start"}); var f=last.querySelector("input"); if(f) f.focus({preventScroll:true}); }
+    }})])
+  );
+}
+
+function renderStep(keepScroll){
+  var y=window.scrollY, s=STEPS[stepIdx];
+  data.step=stepIdx;
+  renderBars();
+  app.innerHTML="";
+  var h=el("h2",{id:"st-h",tabindex:"-1",text:fill(s.title)});
+  var sec=el("section",{class:"step","aria-labelledby":"st-h"},[
+    el("div",{class:"step-head"},[
+      el("p",{class:"count"},["القسم "+(stepIdx+1)+" من "+STEPS.length+" · "+P().name+" · ",
+        el("button",{type:"button",class:"linkbtn",style:"font-size:13px;padding:0",text:"لستِ "+P().name+"؟",onclick:function(){ who=null; renderIntro(); }})]),
+      h, el("p",{text:fill(s.intro)})
+    ])
+  ]);
+  var qs=el("div",{class:"qs"});
+  s.qs.forEach(function(q){
+    if(q.type==="projects"){ var c=el("div",{class:"q","data-q":"projects"}); renderProjects(c); qs.append(c); }
+    else qs.append(field(q,data.answers,"a-"));
+  });
+  sec.append(qs, el("div",{id:"msgBox"}));
+  var last=stepIdx===STEPS.length-1;
+  sec.append(el("div",{class:"nav"},[
+    el("div",{class:"left"},[
+      last ? el("button",{type:"button",class:"btn primary",id:"sendBtn",text:data.sentAt?"إرسال التعديلات":"إرسال الإجابات",onclick:submit})
+           : el("button",{type:"button",class:"btn primary",text:"التالي ←",onclick:function(){ go(stepIdx+1); }}),
+      el("span",{class:"remain",id:"remain",text:remainText()})
+    ]),
+    stepIdx>0 ? el("button",{type:"button",class:"btn outline",text:"→ السابق",onclick:function(){ go(stepIdx-1); }}) : el("span")
+  ]));
+  app.append(sec);
+  if(keepScroll) window.scrollTo(0,y); else { window.scrollTo(0,0); h.focus({preventScroll:true}); }
+}
+
+function go(i){ if(i<0||i>=STEPS.length) return; stepIdx=i; data.step=i; lsSet(key(),data); renderStep(); }
+
+function asText(){
+  var out=["نموذج فريق التوأم: "+P().name,""];
+  STEPS.forEach(function(s){
+    out.push("## "+fill(s.title));
+    s.qs.forEach(function(q){
+      if(q.type==="projects"){
+        if(data.noProjects){ out.push("لا توجد مشاريع حاليًا."); out.push(""); return; }
+        data.projects.filter(hasAny).forEach(function(p,i){
+          out.push("مشروع "+(i+1)+":");
+          PROJ_FIELDS.forEach(function(f){ if(p[f.id]) out.push("- "+f.label+": "+p[f.id]); });
+          out.push("");
+        });
+        return;
+      }
+      var v=data.answers[q.id];
+      if(q.type==="chips"&&v) v=(v.picked||[]).concat(v.other?[v.other]:[]).join("، ");
+      out.push("س: "+fill(q.label)); out.push("ج: "+(v||"—")); out.push("");
+    });
+  });
+  return out.join("\n");
+}
+
+function submit(){
+  var box=document.getElementById("msgBox"); box.innerHTML="";
+  var all=[];
+  STEPS.forEach(function(s,i){ stepMissing(s).forEach(function(m){ all.push({step:i,s:s,m:m}); }); });
+  if(all.length){
+    var ul=el("ul");
+    all.forEach(function(a){
+      ul.append(el("li",{},[el("button",{type:"button",text:fill(a.s.title)+": "+a.m.label,onclick:function(){
+        go(a.step);
+        var n=document.querySelector('.q[data-q="'+a.m.q.id+'"]');
+        if(n){ if(a.m.q.type!=="projects") n.classList.add("missing"); n.scrollIntoView({behavior:"smooth",block:"center"}); var f=n.querySelector("input,textarea"); if(f) f.focus({preventScroll:true}); }
+      }})]));
+    });
+    box.append(el("div",{class:"alert err",role:"alert",style:"margin-top:28px"},[
+      el("strong",{text:"بقيت بعض الأسئلة فارغة. اضغطي على أي سؤال للانتقال إليه."}), ul,
+      el("span",{text:"إذا لم تعرفي الإجابة، اكتبي «لا أعرف»."})
+    ]));
+    box.scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  var btn=document.getElementById("sendBtn"); btn.disabled=true; btn.textContent="جارٍ الإرسال…";
+  var payload={
+    _subject:"نموذج التوأم: "+P().name,
+    who:P().name,
+    answers:asText(),
+    json:JSON.stringify({who:who,answers:data.answers,projects:data.noProjects?[]:data.projects.filter(hasAny)}),
+    _gotcha:""
+  };
+  fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); data.sentAt=Date.now(); lsSet(key(),data); renderDone(); })
+    .catch(function(){
+      btn.disabled=false; btn.textContent="إعادة المحاولة";
+      var ta=el("textarea",{class:"copybox",readonly:true,"aria-label":"نسخة من إجاباتك"}); ta.value=asText();
+      box.append(el("div",{class:"alert err",role:"alert",style:"margin-top:28px"},[
+        el("strong",{text:"لم تُرسل الإجابات."}),
+        el("span",{text:"تأكدي من الاتصال بالإنترنت واضغطي «إعادة المحاولة». وإذا تكررت المشكلة، انسخي إجاباتك من هنا وأرسليها مباشرة."}),
+        copyButton(ta), ta
+      ]));
+    });
+}
+
+function copyButton(ta){
+  var msg=el("span",{role:"status"});
+  return el("div",{style:"display:flex;gap:12px;align-items:center;flex-wrap:wrap"},[
+    el("button",{type:"button",class:"btn outline",text:"نسخ الإجابات",onclick:function(){
+      var fb=function(){ ta.focus(); ta.select(); msg.textContent="النص محدد، انسخيه يدويًا."; };
+      try{ navigator.clipboard.writeText(ta.value).then(function(){ msg.textContent="تم النسخ."; },fb); }catch(e){ fb(); }
+    }}), msg
+  ]);
+}
+
+function renderDone(){
+  renderBars();
+  app.innerHTML="";
+  app.append(el("section",{class:"done"},[
+    el("h2",{},["شكرًا ", el("span",{class:"sticker "+P().cls,text:P().name})]),
+    el("p",{class:"lead",text:"وصلت إجاباتك. إذا تذكرتِ شيئًا لاحقًا، افتحي الرابط من نفس الجهاز، عدّلي ما تريدين، وأرسلي مرة أخرى."}),
+    el("div",{},[el("button",{type:"button",class:"btn outline",text:"مراجعة إجاباتي",onclick:function(){ go(0); }})])
+  ]));
+  window.scrollTo(0,0);
+}
+
+renderIntro();
+})();
+</script>
+</body>
+</html>
