@@ -173,34 +173,26 @@ var STEPS = [
  ]},
  {title:"أنتِ و{sister}", intro:"هنا نبو نفهموا شن اللي يصير لما تشتغلوا مع بعض.", qs:[
   {id:"start", type:"textarea", label:"كيف بديتوا تشتغلوا مع بعض؟ احكي القصة من أولها."},
-  {id:"bring", type:"textarea", label:"شن اللي تجيبيه أنتِ للشغل؟ حاجة لو غبتي، الشغل ينقصه شي."},
-  {id:"sister_bring", type:"textarea", label:"وشن اللي تبدع فيه {sister} أكثر منك؟"},
+  {id:"bring", type:"textarea", label:"شن اللي تجيبيه أنتِ للشغل، وشن اللي تبدع فيه {sister} أكثر منك؟"},
   {id:"roles", type:"chips", label:"شن الأدوار اللي تاخديها أنتِ عادة في أي مشروع؟", hint:"اختاري كل اللي ينطبق.", options:["الفكرة","كتابة السكربت والكابشن","التصوير","المونتاج","الظهور قدام الكاميرا","التواصل مع العميل","التخطيط والنشر","التصميم"]},
-  {id:"one_line", type:"text", label:"لو تلخصي شغلكم مع بعض في جملة وحدة، شن تقولي؟"}
- ]},
- {title:"الأسماء والحسابات", intro:"شفنا حساباتكم، وطلعتلنا شوية أسئلة.", qs:[
-  {id:"accounts", type:"textarea", label:"شن الفرق بين ‎@thetawam و ‎@the.tawam.team؟ ولمين موجّه كل واحد فيهم؟"},
-  {id:"hamza", type:"textarea", short:true, label:"في حساب ‎@thetawam مكتوب «Don’t forget the ء sound!». شن قصة الهمزة؟"},
-  {id:"tovieri", type:"textarea", short:true, label:"‎@tovieri.fiori مذكور في حساباتكم. شن هو، وتبوه يظهر في الموقع؟"},
-  {id:"other_work", type:"textarea", short:true, optional:true, label:"فيه مشاريع أو أعمال ثانية تخصكم وتبوها تظهر؟"}
+  {id:"one_line", type:"text", label:"لو تلخصي شغلكم مع بعض في جملة وحدة، شن تقولي؟"},
+  {id:"accounts", type:"textarea", label:"شن الفرق بين ‎@thetawam و ‎@the.tawam.team؟ وشن قصة «Don’t forget the ء sound!»؟"},
+  {id:"tovieri", type:"textarea", short:true, label:"شن هو ‎@tovieri.fiori؟ وفيه مشاريع ثانية تخصكم تبوها تظهر في الموقع؟"}
  ]},
  {title:"الخدمات", intro:"اكتبي اللي تقدموه فعلًا توا. اللي في الخطة نحطوه بروحه تحت.", qs:[
   {id:"services", type:"chips", label:"علّمي على الخدمات اللي تقدموها توا.", options:["محتوى كامل من الفكرة للنشر","تصوير","مونتاج","ظهور وتقديم إعلاني","محتوى UGC للعلامات","إدارة حسابات","إدارة حملات","تغطية فعاليات","استشارة في المحتوى"]},
   {id:"services_detail", type:"textarea", label:"اختاري أهم خدمتين أو ثلاث، واشرحي كل وحدة: شن يستلم العميل في الآخر؟"},
-  {id:"planned", type:"textarea", short:true, optional:true, label:"خدمات تفكروا تضيفوها قريب؟"},
-  {id:"clients", type:"textarea", label:"مع أي نوع من العملاء تحبوا تشتغلوا؟ وأي نوع تفضلوا تبعدوا عليه؟"},
-  {id:"process", type:"textarea", label:"كيف يمشي الشغل عادة، من أول رسالة يبعثها العميل لين ينزل المحتوى؟"},
-  {id:"no", type:"textarea", short:true, label:"فيه حاجات ما تقبلوهاش في الشغل؟", hint:"نوع منتجات، أسلوب إعلان، أي شي."}
+  {id:"clients", type:"textarea", label:"مع أي نوع من العملاء تحبوا تشتغلوا؟ وشن الحاجات اللي ما تقبلوهاش؟", hint:"نوع منتجات، أسلوب إعلان، أي شي."},
+  {id:"process", type:"textarea", label:"كيف يمشي الشغل عادة، من أول رسالة يبعثها العميل لين ينزل المحتوى؟"}
  ]},
  {title:"الأعمال", intro:"كل مشروع أو تعاون تفتخري بيه. لو ما تتذكريش التفاصيل كلها، اكتبي اللي تعرفيه ونكملوا معاكم بعدين. الأرقام ما نحطوهاش في الموقع إلا لو موثقة.", qs:[
   {id:"projects", type:"projects"}
  ]},
  {title:"الموقع", intro:"توا دورك تقولي شن في بالك.", qs:[
   {id:"first", type:"textarea", short:true, label:"أول حاجة لازم يفهمها اللي يدخل الموقع، شن هي؟"},
-  {id:"visitor", type:"textarea", short:true, label:"مين أهم شخص تتمني يزور الموقع؟", hint:"صاحب شركة؟ مسؤول تسويق؟ حد ثاني؟"},
   {id:"feel", type:"text", label:"بعد ما يقفل الموقع، شن تبيه يحس؟ ثلاث كلمات."},
   {id:"likes", type:"textarea", label:"مواقع أو حسابات يعجبك شكلها؟", hint:"حطي الروابط وقولي شن عجبك فيها بالضبط."},
-  {id:"avoid", type:"textarea", short:true, label:"حاجات ما تبيهاش تظهر في الموقع."},
+  {id:"avoid", type:"textarea", short:true, optional:true, label:"حاجات ما تبيهاش تظهر في الموقع."},
   {id:"phrases", type:"textarea", short:true, label:"كلمات أو عبارات تقولوها دايمًا في الشغل أو في المحتوى.", hint:"تساعدنا نكتبوا الموقع بصوتكم أنتم."},
   {id:"followers", type:"radio", label:"تحبي عدد المتابعين يظهر في الموقع؟", options:["إيه","لا","ما يفرقش معاي"]},
   {id:"photos", type:"radio", label:"عندكم صور جاهزة بجودة عالية نقدروا نستعملوها في الموقع؟", options:["إيه","لا","فيه شوية"]}
@@ -208,7 +200,6 @@ var STEPS = [
  {title:"التواصل", intro:"آخر خطوة.", qs:[
   {id:"contact_way", type:"chips", label:"كيف تحبوا العميل يتواصل معاكم؟", options:["واتساب","إيميل","نموذج في الموقع","رسائل انستغرام"]},
   {id:"contact_details", type:"textarea", short:true, label:"الرقم أو الإيميل اللي يظهر في الموقع.", hint:"لو مش متأكدة، اكتبي «نتفقوا عليه»."},
-  {id:"reply", type:"text", label:"عادة في قداش وقت تردوا على رسالة عميل؟"},
   {id:"extra", type:"textarea", optional:true, label:"حاجة ما سألناكش عليها وتبيها في الموقع؟"}
  ]}
 ];
@@ -313,7 +304,7 @@ function renderIntro(){
       el("li",{text:"اكتبي زي ما تحكي. مش لازم صياغة مرتبة ولا لغة رسمية."}),
       el("li",{text:"ما فيش إجابة غلط. لو سؤال ما عجبكش، قولي ليش."}),
       el("li",{text:"اللي تكتبيه يتحفظ أول بأول على جهازك، وتقدري تكملي بعدين من نفس الجهاز."}),
-      el("li",{text:"فيه سبع أقسام. لو جاوبتي براحتك ياخذ حوالي نص ساعة."})
+      el("li",{text:"فيه ست أقسام. لو جاوبتي براحتك ياخذ حوالي 20 دقيقة."})
     ]),
     el("div",{class:"pick"},[
       el("h2",{text:"مين أنتِ؟"}),
