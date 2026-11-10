@@ -53,6 +53,8 @@ button,input,textarea{font:inherit;color:inherit}
 .intro{padding-top:calc(40px + env(safe-area-inset-top,0px));padding-bottom:56px;display:grid;gap:28px}
 .intro .logo{width:160px}
 .intro h1{font-size:clamp(34px,7.5vw,56px);line-height:1.2;font-weight:900}
+.intro h1 .sticker{font-size:.62em;margin-inline-start:.15em;vertical-align:.25em}
+.step-head h2 .sticker{font-size:.7em}
 .lead{font-size:clamp(18px,2.6vw,20px);max-width:60ch}
 .rules{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .rules li{display:flex;gap:12px;align-items:baseline}
@@ -161,51 +163,66 @@ var PEOPLE = {
 };
 
 var STEPS = [
- {title:"عنكِ", intro:"معلومات أساسية عنكِ.", qs:[
-  {id:"name_ar", type:"text", label:"اسمك كما تحبين أن يظهر في الموقع", ph:"{name} مفتاح"},
-  {id:"name_en", type:"text", ltr:true, label:"اسمك بالإنجليزية", hint:"حتى يُكتب بنفس الطريقة في كل مكان وفي نتائج البحث.", ph:"…Muftah"},
-  {id:"bio", type:"textarea", label:"عرّفي بنفسك في ثلاث أو أربع جمل", hint:"ماذا تدرسين أو تعملين، وعن ماذا تتكلمين في حسابك."},
-  {id:"links", type:"textarea", short:true, optional:true, ltr:true, label:"حساباتك التي تريدين إظهارها في الموقع", hint:"روابط أو أسماء الحسابات: إنستغرام، تيك توك، لينكدإن…"}
+ {title:"عنكِ", intro:"نبدوا بيك أنتِ، بعيد عن الفريق شوية.", qs:[
+  {id:"name_ar", type:"text", label:"اسمك كيف تحبي يُكتب في الموقع؟", ph:"{name} مفتاح"},
+  {id:"name_en", type:"text", ltr:true, label:"وبالإنجليزي، كيف يُكتب؟", hint:"عشان يُكتب بنفس الطريقة في كل مكان وفي نتائج البحث.", ph:"…Muftah"},
+  {id:"now", type:"textarea", short:true, label:"شن تديري في حياتك توا؟", hint:"دراسة، شغل، تخصص، أي حاجة تاخذ من وقتك."},
+  {id:"words", type:"text", label:"ثلاث كلمات يوصفوك بيها الناس اللي يعرفوك من قريب."},
+  {id:"personal", type:"textarea", label:"حسابك الشخصي على شن يدور؟ وليش اخترتي تحكي على المواضيع هذي بالذات؟"},
+  {id:"links", type:"textarea", short:true, optional:true, ltr:true, label:"حساباتك اللي تبيها تظهر في الموقع", hint:"حطي الروابط أو أسماء الحسابات: انستغرام، تيك توك، لينكدإن، يوتيوب…"}
  ]},
- {title:"العمل مع {sister}", intro:"كيف تعملان كفريق.", qs:[
-  {id:"start", type:"textarea", short:true, label:"متى وكيف بدأتما العمل معًا؟"},
-  {id:"contrib", type:"textarea", label:"ما الذي تضيفينه أنتِ للعمل، وما الذي تضيفه {sister}؟"},
-  {id:"roles", type:"chips", label:"ما الأدوار التي تتولينها عادة في المشروع؟", hint:"اختاري كل ما ينطبق.", options:["الفكرة","كتابة السكربت والكابشن","التصوير","المونتاج","الظهور أمام الكاميرا","التواصل مع العميل","التخطيط والنشر","التصميم"]},
-  {id:"one_line", type:"text", label:"جملة واحدة تلخص عملكما معًا"},
-  {id:"accounts", type:"textarea", short:true, label:"ما الفرق بين ‎@thetawam و ‎@the.tawam.team، ولمن يتوجه كل حساب؟"},
-  {id:"side", type:"textarea", short:true, label:"ما هو ‎@tovieri.fiori؟ وهل لديكما مشاريع أخرى تريدان إظهارها في الموقع؟"}
+ {title:"أنتِ و{sister}", intro:"هنا نبو نفهموا شن اللي يصير لما تشتغلوا مع بعض.", qs:[
+  {id:"start", type:"textarea", label:"كيف بديتوا تشتغلوا مع بعض؟ احكي القصة من أولها."},
+  {id:"bring", type:"textarea", label:"شن اللي تجيبيه أنتِ للشغل؟ حاجة لو غبتي، الشغل ينقصه شي."},
+  {id:"sister_bring", type:"textarea", label:"وشن اللي تبدع فيه {sister} أكثر منك؟"},
+  {id:"roles", type:"chips", label:"شن الأدوار اللي تاخديها أنتِ عادة في أي مشروع؟", hint:"اختاري كل اللي ينطبق.", options:["الفكرة","كتابة السكربت والكابشن","التصوير","المونتاج","الظهور قدام الكاميرا","التواصل مع العميل","التخطيط والنشر","التصميم"]},
+  {id:"one_line", type:"text", label:"لو تلخصي شغلكم مع بعض في جملة وحدة، شن تقولي؟"}
  ]},
- {title:"الخدمات", intro:"اذكري ما تقدمانه حاليًا فقط.", qs:[
-  {id:"services", type:"chips", label:"ما الخدمات التي تقدمانها حاليًا؟", options:["محتوى كامل من الفكرة إلى النشر","تصوير","مونتاج","ظهور وتقديم إعلاني","محتوى UGC للعلامات","إدارة حسابات","إدارة حملات","تغطية فعاليات","استشارة في المحتوى"]},
-  {id:"services_detail", type:"textarea", label:"اشرحي أهم خدمتين أو ثلاث: ماذا يستلم العميل في النهاية؟"},
-  {id:"clients", type:"textarea", short:true, label:"مع أي نوع من العملاء تعملان؟ وهل هناك مجالات لا تقبلانها؟"},
-  {id:"markets", type:"chips", label:"أين عملاؤكما وجمهوركما؟", options:["ليبيا","دول الخليج","باقي الدول العربية","خارج العالم العربي"]},
-  {id:"process", type:"textarea", short:true, label:"كيف تسير خطوات العمل عادة، من أول تواصل مع العميل حتى النشر؟"}
+ {title:"الأسماء والحسابات", intro:"شفنا حساباتكم، وطلعتلنا شوية أسئلة.", qs:[
+  {id:"accounts", type:"textarea", label:"شن الفرق بين ‎@thetawam و ‎@the.tawam.team؟ ولمين موجّه كل واحد فيهم؟"},
+  {id:"hamza", type:"textarea", short:true, label:"في حساب ‎@thetawam مكتوب «Don’t forget the ء sound!». شن قصة الهمزة؟"},
+  {id:"tovieri", type:"textarea", short:true, label:"‎@tovieri.fiori مذكور في حساباتكم. شن هو، وتبوه يظهر في الموقع؟"},
+  {id:"other_work", type:"textarea", short:true, optional:true, label:"فيه مشاريع أو أعمال ثانية تخصكم وتبوها تظهر؟"}
  ]},
- {title:"الأعمال", intro:"أضيفي المشاريع والتعاونات التي تودّين عرضها. اكتبي ما تتذكرينه، ونكمل التفاصيل معكما لاحقًا. لن نذكر أي أرقام في الموقع إلا إذا كانت موثقة.", qs:[
+ {title:"الخدمات", intro:"اكتبي اللي تقدموه فعلًا توا. اللي في الخطة نحطوه بروحه تحت.", qs:[
+  {id:"services", type:"chips", label:"علّمي على الخدمات اللي تقدموها توا.", options:["محتوى كامل من الفكرة للنشر","تصوير","مونتاج","ظهور وتقديم إعلاني","محتوى UGC للعلامات","إدارة حسابات","إدارة حملات","تغطية فعاليات","استشارة في المحتوى"]},
+  {id:"services_detail", type:"textarea", label:"اختاري أهم خدمتين أو ثلاث، واشرحي كل وحدة: شن يستلم العميل في الآخر؟"},
+  {id:"planned", type:"textarea", short:true, optional:true, label:"خدمات تفكروا تضيفوها قريب؟"},
+  {id:"clients", type:"textarea", label:"مع أي نوع من العملاء تحبوا تشتغلوا؟ وأي نوع تفضلوا تبعدوا عليه؟"},
+  {id:"process", type:"textarea", label:"كيف يمشي الشغل عادة، من أول رسالة يبعثها العميل لين ينزل المحتوى؟"},
+  {id:"no", type:"textarea", short:true, label:"فيه حاجات ما تقبلوهاش في الشغل؟", hint:"نوع منتجات، أسلوب إعلان، أي شي."}
+ ]},
+ {title:"الأعمال", intro:"كل مشروع أو تعاون تفتخري بيه. لو ما تتذكريش التفاصيل كلها، اكتبي اللي تعرفيه ونكملوا معاكم بعدين. الأرقام ما نحطوهاش في الموقع إلا لو موثقة.", qs:[
   {id:"projects", type:"projects"}
  ]},
- {title:"الموقع والتواصل", intro:"القسم الأخير.", qs:[
-  {id:"first", type:"textarea", short:true, label:"ما أهم شيء يجب أن يفهمه الزائر عنكما؟"},
-  {id:"visitor", type:"textarea", short:true, label:"من الزائر الأهم للموقع؟", hint:"مثلًا: أصحاب الشركات، مسؤولو التسويق…"},
-  {id:"likes", type:"textarea", short:true, optional:true, label:"مواقع أو حسابات يعجبك أسلوبها", hint:"أضيفي الروابط وما الذي أعجبك فيها."},
-  {id:"followers", type:"radio", label:"هل تريدين إظهار عدد المتابعين في الموقع؟", options:["نعم","لا","لا يهم"]},
-  {id:"photos", type:"radio", label:"بالنسبة لصور الموقع", options:["لدينا صور جاهزة بجودة عالية","نفضّل جلسة تصوير خاصة","الاثنان"]},
-  {id:"contact_way", type:"chips", label:"كيف تفضّلان أن يتواصل معكما العملاء؟", options:["واتساب","البريد الإلكتروني","نموذج في الموقع","رسائل إنستغرام"]},
-  {id:"contact_details", type:"textarea", short:true, label:"رقم أو بريد التواصل الذي يظهر في الموقع", hint:"إذا لم يُحسم بعد، اكتبي «لاحقًا»."},
-  {id:"extra", type:"textarea", short:true, optional:true, label:"أي ملاحظة أخرى عن الموقع؟"}
+ {title:"الموقع", intro:"توا دورك تقولي شن في بالك.", qs:[
+  {id:"first", type:"textarea", short:true, label:"أول حاجة لازم يفهمها اللي يدخل الموقع، شن هي؟"},
+  {id:"visitor", type:"textarea", short:true, label:"مين أهم شخص تتمني يزور الموقع؟", hint:"صاحب شركة؟ مسؤول تسويق؟ حد ثاني؟"},
+  {id:"feel", type:"text", label:"بعد ما يقفل الموقع، شن تبيه يحس؟ ثلاث كلمات."},
+  {id:"likes", type:"textarea", label:"مواقع أو حسابات يعجبك شكلها؟", hint:"حطي الروابط وقولي شن عجبك فيها بالضبط."},
+  {id:"avoid", type:"textarea", short:true, label:"حاجات ما تبيهاش تظهر في الموقع."},
+  {id:"phrases", type:"textarea", short:true, label:"كلمات أو عبارات تقولوها دايمًا في الشغل أو في المحتوى.", hint:"تساعدنا نكتبوا الموقع بصوتكم أنتم."},
+  {id:"followers", type:"radio", label:"تحبي عدد المتابعين يظهر في الموقع؟", options:["إيه","لا","ما يفرقش معاي"]},
+  {id:"photos", type:"radio", label:"عندكم صور جاهزة بجودة عالية نقدروا نستعملوها في الموقع؟", options:["إيه","لا","فيه شوية"]}
+ ]},
+ {title:"التواصل", intro:"آخر خطوة.", qs:[
+  {id:"contact_way", type:"chips", label:"كيف تحبوا العميل يتواصل معاكم؟", options:["واتساب","إيميل","نموذج في الموقع","رسائل انستغرام"]},
+  {id:"contact_details", type:"textarea", short:true, label:"الرقم أو الإيميل اللي يظهر في الموقع.", hint:"لو مش متأكدة، اكتبي «نتفقوا عليه»."},
+  {id:"reply", type:"text", label:"عادة في قداش وقت تردوا على رسالة عميل؟"},
+  {id:"extra", type:"textarea", optional:true, label:"حاجة ما سألناكش عليها وتبيها في الموقع؟"}
  ]}
 ];
 
 var PROJ_FIELDS = [
   {id:"brand", type:"text", label:"اسم العلامة أو المشروع"},
-  {id:"when", type:"text", label:"التاريخ", ph:"مثلًا: صيف 2026"},
-  {id:"platform", type:"text", label:"المنصة", ph:"إنستغرام، تيك توك…"},
-  {id:"brief", type:"textarea", short:true, label:"ما المطلوب، وما الفكرة التي قدمتماها؟"},
-  {id:"role", type:"textarea", short:true, label:"ما دوركما بالتحديد؟"},
-  {id:"result", type:"textarea", short:true, optional:true, label:"النتيجة", hint:"أرقام أو ردود فعل، فقط ما لديكما ما يثبته."},
+  {id:"when", type:"text", label:"متى؟", ph:"مثلًا: صيف 2026"},
+  {id:"platform", type:"text", label:"وين نزل؟", ph:"انستغرام، تيك توك…"},
+  {id:"ask", type:"textarea", short:true, label:"شن كان المطلوب، أو شن كانت المشكلة؟"},
+  {id:"idea", type:"textarea", short:true, label:"شن الفكرة اللي قدمتوها؟"},
+  {id:"role", type:"textarea", short:true, label:"شن دوركم بالضبط؟"},
+  {id:"result", type:"textarea", short:true, optional:true, label:"شن صار بعدها؟", hint:"أرقام أو ردود فعل، بس اللي عندك عليه دليل."},
   {id:"link", type:"text", optional:true, ltr:true, label:"رابط المحتوى"},
-  {id:"show", type:"radio", label:"هل يمكن عرضه في الموقع؟", options:["نعم","لا","نحتاج موافقة العميل"]}
+  {id:"show", type:"radio", label:"نقدروا نعرضوه في الموقع؟", options:["إيه","لا","لازم نسألوا العميل"]}
 ];
 
 var who=null, stepIdx=0, data=null, saveTimer=null;
@@ -231,7 +248,7 @@ function setStatus(s,text){ var st=document.getElementById("status"); st.setAttr
 function save(){
   data.updatedAt=Date.now();
   clearTimeout(saveTimer);
-  saveTimer=setTimeout(function(){ var ok=lsSet(key(),data); setStatus(ok?"ok":"idle", ok?"محفوظ على جهازك":"لم يُحفظ على هذا المتصفح"); },400);
+  saveTimer=setTimeout(function(){ var ok=lsSet(key(),data); setStatus(ok?"ok":"idle", ok?"محفوظ على جهازك":"ما انحفظش على هذا المتصفح"); },400);
 }
 
 /* completeness */
@@ -248,10 +265,10 @@ function stepMissing(s){
     if(q.type==="projects"){
       if(data.noProjects) return;
       var real=data.projects.filter(hasAny);
-      if(!real.length) miss.push({q:q,label:"أضيفي مشروعًا واحدًا على الأقل، أو اختاري «لا توجد مشاريع أضيفها الآن»"});
+      if(!real.length) miss.push({q:q,label:"أضيفي مشروع واحد على الأقل، أو علّمي إنه ما عندكش مشاريع توا"});
       else real.forEach(function(p){
         var i=data.projects.indexOf(p);
-        if(PROJ_FIELDS.some(function(f){ return !f.optional && !isFilled(f,p); })) miss.push({q:q,label:"المشروع "+(i+1)+": بعض الخانات فارغة"});
+        if(PROJ_FIELDS.some(function(f){ return !f.optional && !isFilled(f,p); })) miss.push({q:q,label:"المشروع "+(i+1)+": فيه خانات فاضية"});
       });
       return;
     }
@@ -263,10 +280,10 @@ function stepRatio(s){ var req=s.qs.filter(function(q){return !q.optional;}).len
 function totalMissing(){ return STEPS.reduce(function(n,s){ return n+stepMissing(s).length; },0); }
 function remainText(){
   var n=totalMissing();
-  if(!n) return "كل الأسئلة مُجابة";
-  if(n===1) return "بقي سؤال واحد";
-  if(n===2) return "بقي سؤالان";
-  return "بقي "+n+(n<=10?" أسئلة":" سؤالًا");
+  if(!n) return "كل الأسئلة مجاوبة";
+  if(n===1) return "باقي سؤال واحد";
+  if(n===2) return "باقي سؤالين";
+  return "باقي "+n+(n<=10?" أسئلة":" سؤال");
 }
 
 var app=document.getElementById("app");
@@ -290,24 +307,25 @@ function renderIntro(){
   app.innerHTML="";
   app.append(el("section",{class:"intro"},[
     el("img",{class:"logo",src:"logo.svg",alt:"فريق التوأم",width:"160",height:"109"}),
-    el("h1",{text:"قبل أن نبدأ الموقع، نحتاج أن نسمع منكِ."}),
-    el("p",{class:"lead",text:"كل واحدة منكما تملأ هذا النموذج وحدها. إجاباتكما هي المادة التي سنكتب منها الموقع، فاكتبي بأسلوبك ولا تشغلي بالك بالصياغة."}),
+    (function(){ var h=el("h1"); h.append("قبل ما نبنوا الموقع، نبو نسمعوا منك ", el("span",{class:"sticker o",text:"أنتِ"})); return h; })(),
+    el("p",{class:"lead",text:"الموقع لازم يحكي عليكم بكلامكم أنتم. لهذا كل وحدة فيكم تعبّي النموذج هذا بروحها، من غير ما تشوف إجابات أختها."}),
     el("ul",{class:"rules"},[
-      el("li",{text:"خمسة أقسام، وتحتاج حوالي 15 دقيقة."}),
-      el("li",{text:"إجاباتك تُحفظ على جهازك أثناء الكتابة، ويمكنك الإكمال لاحقًا من نفس الجهاز."}),
-      el("li",{text:"إذا لم تعرفي إجابة سؤال، اكتبي «لا أعرف» وأكملي."})
+      el("li",{text:"اكتبي زي ما تحكي. مش لازم صياغة مرتبة ولا لغة رسمية."}),
+      el("li",{text:"ما فيش إجابة غلط. لو سؤال ما عجبكش، قولي ليش."}),
+      el("li",{text:"اللي تكتبيه يتحفظ أول بأول على جهازك، وتقدري تكملي بعدين من نفس الجهاز."}),
+      el("li",{text:"فيه سبع أقسام. لو جاوبتي براحتك ياخذ حوالي نص ساعة."})
     ]),
     el("div",{class:"pick"},[
-      el("h2",{text:"من أنتِ؟"}),
+      el("h2",{text:"مين أنتِ؟"}),
       el("div",{class:"who"},["rayan","retaj"].map(function(k){
         var saved=lsGet("tawam-intake-"+k);
         return el("button",{type:"button",onclick:function(){choose(k);}},[
           el("span",{class:"sticker "+PEOPLE[k].cls,text:PEOPLE[k].name}),
-          el("small",{text: saved&&saved.updatedAt ? (saved.sentAt?"أُرسلت إجاباتك، ويمكنك تعديلها":"أكملي من حيث توقفتِ") : "ابدئي من هنا"})
+          el("small",{text: saved&&saved.updatedAt ? (saved.sentAt?"بعثتي إجاباتك، تقدري تعدّلي":"كمّلي من وين وقفتي") : "ابدئي من هنا"})
         ]);
       }))
     ]),
-    el("p",{class:"note",text:"يُفضَّل أن تملأ كل واحدة النموذج من جهازها."})
+    el("p",{class:"note",text:"الأفضل كل وحدة تعبّي النموذج من جهازها."})
   ]));
   window.scrollTo(0,0);
 }
@@ -318,7 +336,7 @@ function choose(k){
   if(!data.projects||!data.projects.length) data.projects=[newProj()];
   stepIdx=Math.min(data.step||0,STEPS.length-1);
   document.getElementById("top").hidden=false;
-  setStatus(data.updatedAt?"ok":"idle", data.updatedAt?"محفوظ على جهازك":"لم تبدئي بعد");
+  setStatus(data.updatedAt?"ok":"idle", data.updatedAt?"محفوظ على جهازك":"لسه ما كتبتيش شي");
   renderStep();
 }
 
@@ -351,14 +369,14 @@ function field(q,store,prefix){
     });
     fs.append(row);
     if(multi){
-      var oth=el("input",{type:"text",id:id+"-other",class:"other",placeholder:"شيء آخر؟ اكتبيه هنا","aria-label":"إضافة: "+lab});
+      var oth=el("input",{type:"text",id:id+"-other",class:"other",placeholder:"حاجة ثانية؟ اكتبيها هنا","aria-label":"إضافة: "+lab});
       oth.value=cur.other||"";
       oth.addEventListener("input",function(){ cur.other=oth.value; wrap.classList.remove("missing"); changed(); });
       fs.append(oth);
     }
     wrap.append(fs);
   }
-  wrap.append(el("p",{class:"miss-msg",text:"هذا السؤال ما زال فارغًا."}));
+  wrap.append(el("p",{class:"miss-msg",text:"السؤال هذا لسه فاضي."}));
   return wrap;
 }
 
@@ -366,7 +384,7 @@ function renderProjects(c){
   var list=el("div",{class:"proj-list"});
   data.projects.forEach(function(p,i){
     var head=el("div",{class:"proj-top"},[el("h3",{text:"مشروع "+(i+1)})]);
-    if(data.projects.length>1) head.append(el("button",{type:"button",class:"linkbtn",text:"حذف هذا المشروع",onclick:function(){ data.projects.splice(i,1); changed(); renderStep(true); }}));
+    if(data.projects.length>1) head.append(el("button",{type:"button",class:"linkbtn",text:"احذفي المشروع هذا",onclick:function(){ data.projects.splice(i,1); changed(); renderStep(true); }}));
     var box=el("div",{class:"proj"},[head]);
     PROJ_FIELDS.forEach(function(f){ box.append(field(f,p,"p"+p.k+"-")); });
     list.append(box);
@@ -375,9 +393,9 @@ function renderProjects(c){
   if(data.noProjects) list.style.opacity=".45";
   none.addEventListener("change",function(){ data.noProjects=none.checked; list.style.opacity=none.checked?".45":""; changed(); });
   c.append(
-    el("label",{class:"none-box",for:"noProjects"},[none,el("span",{text:"لا توجد مشاريع أضيفها الآن."})]),
+    el("label",{class:"none-box",for:"noProjects"},[none,el("span",{text:"ما عنديش مشاريع نقدر نحطها توا."})]),
     list,
-    el("div",{},[el("button",{type:"button",class:"btn outline",text:"+ إضافة مشروع آخر",onclick:function(){
+    el("div",{},[el("button",{type:"button",class:"btn outline",text:"+ أضيفي مشروع ثاني",onclick:function(){
       data.projects.push(newProj()); changed(); renderStep(true);
       var all=document.querySelectorAll(".proj"), last=all[all.length-1];
       if(last){ last.scrollIntoView({behavior:"smooth",block:"start"}); var f=last.querySelector("input"); if(f) f.focus({preventScroll:true}); }
@@ -390,11 +408,12 @@ function renderStep(keepScroll){
   data.step=stepIdx;
   renderBars();
   app.innerHTML="";
-  var h=el("h2",{id:"st-h",tabindex:"-1",text:fill(s.title)});
+  var h=el("h2",{id:"st-h",tabindex:"-1"});
+  if(stepIdx===0) h.append(el("span",{class:"sticker "+P().cls,text:fill(s.title)})); else h.textContent=fill(s.title);
   var sec=el("section",{class:"step","aria-labelledby":"st-h"},[
     el("div",{class:"step-head"},[
       el("p",{class:"count"},["القسم "+(stepIdx+1)+" من "+STEPS.length+" · "+P().name+" · ",
-        el("button",{type:"button",class:"linkbtn",style:"font-size:13px;padding:0",text:"لستِ "+P().name+"؟",onclick:function(){ who=null; renderIntro(); }})]),
+        el("button",{type:"button",class:"linkbtn",style:"font-size:13px;padding:0",text:"مش أنتِ؟",onclick:function(){ who=null; renderIntro(); }})]),
       h, el("p",{text:fill(s.intro)})
     ])
   ]);
@@ -407,7 +426,7 @@ function renderStep(keepScroll){
   var last=stepIdx===STEPS.length-1;
   sec.append(el("div",{class:"nav"},[
     el("div",{class:"left"},[
-      last ? el("button",{type:"button",class:"btn primary",id:"sendBtn",text:data.sentAt?"إرسال التعديلات":"إرسال الإجابات",onclick:submit})
+      last ? el("button",{type:"button",class:"btn primary",id:"sendBtn",text:data.sentAt?"ابعتي التعديلات":"خلّصت، ابعتي الإجابات",onclick:submit})
            : el("button",{type:"button",class:"btn primary",text:"التالي ←",onclick:function(){ go(stepIdx+1); }}),
       el("span",{class:"remain",id:"remain",text:remainText()})
     ]),
@@ -425,7 +444,7 @@ function asText(){
     out.push("## "+fill(s.title));
     s.qs.forEach(function(q){
       if(q.type==="projects"){
-        if(data.noProjects){ out.push("لا توجد مشاريع حاليًا."); out.push(""); return; }
+        if(data.noProjects){ out.push("ما عنديش مشاريع توا."); out.push(""); return; }
         data.projects.filter(hasAny).forEach(function(p,i){
           out.push("مشروع "+(i+1)+":");
           PROJ_FIELDS.forEach(function(f){ if(p[f.id]) out.push("- "+f.label+": "+p[f.id]); });
@@ -455,13 +474,13 @@ function submit(){
       }})]));
     });
     box.append(el("div",{class:"alert err",role:"alert",style:"margin-top:28px"},[
-      el("strong",{text:"بقيت بعض الأسئلة فارغة. اضغطي على أي سؤال للانتقال إليه."}), ul,
-      el("span",{text:"إذا لم تعرفي الإجابة، اكتبي «لا أعرف»."})
+      el("strong",{text:"باقي شوية أسئلة فاضية. اضغطي على أي واحد عشان تمشيله."}), ul,
+      el("span",{text:"لو ما عندكش إجابة لسؤال، اكتبي «ما نعرفش» أو «مش متأكدة»، وهذا يكفينا."})
     ]));
     box.scrollIntoView({behavior:"smooth",block:"center"});
     return;
   }
-  var btn=document.getElementById("sendBtn"); btn.disabled=true; btn.textContent="جارٍ الإرسال…";
+  var btn=document.getElementById("sendBtn"); btn.disabled=true; btn.textContent="قاعدة تتبعت…";
   var payload={
     _subject:"نموذج التوأم: "+P().name,
     who:P().name,
@@ -472,11 +491,11 @@ function submit(){
   fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)})
     .then(function(r){ if(!r.ok) throw new Error(r.status); data.sentAt=Date.now(); lsSet(key(),data); renderDone(); })
     .catch(function(){
-      btn.disabled=false; btn.textContent="إعادة المحاولة";
+      btn.disabled=false; btn.textContent="عاودي";
       var ta=el("textarea",{class:"copybox",readonly:true,"aria-label":"نسخة من إجاباتك"}); ta.value=asText();
       box.append(el("div",{class:"alert err",role:"alert",style:"margin-top:28px"},[
-        el("strong",{text:"لم تُرسل الإجابات."}),
-        el("span",{text:"تأكدي من الاتصال بالإنترنت واضغطي «إعادة المحاولة». وإذا تكررت المشكلة، انسخي إجاباتك من هنا وأرسليها مباشرة."}),
+        el("strong",{text:"الإجابات ما وصلتش."}),
+        el("span",{text:"تأكدي من النت واضغطي «عاودي». لو المشكلة استمرت، انسخي إجاباتك من هنا وابعتيها مباشرة للي بعتلك الرابط."}),
         copyButton(ta), ta
       ]));
     });
@@ -485,8 +504,8 @@ function submit(){
 function copyButton(ta){
   var msg=el("span",{role:"status"});
   return el("div",{style:"display:flex;gap:12px;align-items:center;flex-wrap:wrap"},[
-    el("button",{type:"button",class:"btn outline",text:"نسخ الإجابات",onclick:function(){
-      var fb=function(){ ta.focus(); ta.select(); msg.textContent="النص محدد، انسخيه يدويًا."; };
+    el("button",{type:"button",class:"btn outline",text:"انسخي إجاباتك",onclick:function(){
+      var fb=function(){ ta.focus(); ta.select(); msg.textContent="النص محدد، انسخيه بإيدك."; };
       try{ navigator.clipboard.writeText(ta.value).then(function(){ msg.textContent="تم النسخ."; },fb); }catch(e){ fb(); }
     }}), msg
   ]);
@@ -496,9 +515,9 @@ function renderDone(){
   renderBars();
   app.innerHTML="";
   app.append(el("section",{class:"done"},[
-    el("h2",{},["شكرًا ", el("span",{class:"sticker "+P().cls,text:P().name})]),
-    el("p",{class:"lead",text:"وصلت إجاباتك. إذا تذكرتِ شيئًا لاحقًا، افتحي الرابط من نفس الجهاز، عدّلي ما تريدين، وأرسلي مرة أخرى."}),
-    el("div",{},[el("button",{type:"button",class:"btn outline",text:"مراجعة إجاباتي",onclick:function(){ go(0); }})])
+    el("h2",{},["خلّصتي! شكرًا يا ", el("span",{class:"sticker "+P().cls,text:P().name})]),
+    el("p",{class:"lead",text:"إجاباتك وصلت. لو تذكرتي حاجة بعدين، افتحي نفس الرابط من نفس الجهاز، عدّلي وابعتي مرة ثانية."}),
+    el("div",{},[el("button",{type:"button",class:"btn outline",text:"→ ارجعي للإجابات",onclick:function(){ go(0); }})])
   ]));
   window.scrollTo(0,0);
 }
